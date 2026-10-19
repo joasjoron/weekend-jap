@@ -1,4 +1,4 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Week-end JAP 2026</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -476,8 +476,86 @@ a { color: inherit; }
 .wall-tip { background: var(--blues); border-radius: 14px; padding: 12px 14px; font-size: 14.5px; line-height: 1.4; }
 .wall-embed { margin-top: 12px; border-radius: var(--r); overflow: hidden; background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--line); }
 .wall-embed iframe { display: block; width: 100%; height: calc(100vh - var(--tabbar-h) - 120px); min-height: 520px; border: 0; }
+
+/* ---------- Ateliers détaillés & intervenants ---------- */
+.at-more { border-top: 1px solid var(--line); margin-top: 4px; }
+.at-more > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 10px 0 4px; font-weight: 700; font-size: 14.5px; color: var(--mocha); }
+.at-more > summary::-webkit-details-marker { display: none; }
+.at-more > summary::after { content: "+"; font-size: 20px; line-height: 1; }
+.at-more[open] > summary::after { content: "–"; }
+.at-more-body { display: grid; gap: 10px; padding: 6px 0 4px; }
+.at-details { margin: 0; color: var(--ink); font-size: 15px; white-space: pre-line; }
+.soon { margin: 0; font-family: var(--f-soul); font-style: italic; font-size: 17px; color: var(--mocha); }
+.mini-speaker { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; border: 0; cursor: pointer; padding: 8px; border-radius: 12px; background: var(--cream); font: inherit; color: inherit; }
+.mini-speaker b { display: block; font-size: 15px; }
+.mini-speaker small { display: block; font-size: 12.5px; color: var(--ink-soft); }
+.ms-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; }
+.mono.ms-photo, .mono.sp-photo { display: grid; place-items: center; background: var(--pomelo); color: var(--charcoal); font-family: var(--f-voice); letter-spacing: -.04em; }
+.mono.ms-photo { font-size: 14px; }
+.socials { display: flex; flex-wrap: wrap; gap: 6px; }
+.soc { display: inline-flex; align-items: center; gap: 4px; min-height: 34px; padding: 0 12px; border-radius: var(--r-pill); background: var(--charcoal); color: var(--on-dark); text-decoration: none; font-size: 13px; font-weight: 700; }
+.soc svg { width: 13px; height: 13px; color: var(--pomelo); }
+.sp-card { background: var(--paper); border-radius: var(--r); box-shadow: inset 0 0 0 1.5px var(--line); padding: 16px; display: grid; gap: 12px; transition: box-shadow .3s; }
+.sp-card.flash { box-shadow: inset 0 0 0 3px var(--pomelo); }
+.sp-top { display: flex; align-items: center; gap: 14px; }
+.sp-photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex: none; }
+.mono.sp-photo { font-size: 24px; }
+.sp-id b { display: block; font: 400 22px/1 var(--f-voice); letter-spacing: -.045em; text-transform: uppercase; }
+.sp-id span { display: block; margin-top: 4px; font-size: 14px; color: var(--ink-soft); }
+.sp-bio { margin: 0; font-size: 15px; white-space: pre-line; }
+.sp-leads { display: grid; gap: 4px; }
+.sp-leads span { font-size: 14px; background: var(--blues); border-radius: 10px; padding: 8px 10px; }
+.sp-card:first-child { background: var(--charcoal); color: var(--on-dark); box-shadow: none; }
+.sp-card:first-child .sp-id b { color: var(--pomelo); }
+.sp-card:first-child .sp-id span, .sp-card:first-child .soon { color: rgba(255,248,241,.72); }
+.sp-card:first-child .soc { background: var(--pomelo); color: var(--charcoal); }
+.sp-card:first-child .soc svg { color: var(--charcoal); }
+.sp-card:first-child .sp-leads span { color: var(--charcoal); }
+.adm-photo { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- À la une ---------- */
+.une { margin-top: 22px; display: grid; gap: 10px; }
+.une-head { display: flex; justify-content: space-between; align-items: baseline; }
+.une-count { font-size: 12.5px; color: var(--ink-soft); }
+.une-track { display: grid; grid-auto-flow: column; grid-auto-columns: 86%; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px))); padding-right: max(16px, env(safe-area-inset-right, 0px)); scrollbar-width: none; }
+.une-track::-webkit-scrollbar { display: none; }
+.une-track.single { grid-auto-columns: 100%; margin-right: 0; padding-right: 0; }
+.une-card { scroll-snap-align: start; min-width: 0; border-radius: 20px; padding: 18px; display: grid; gap: 14px; align-content: space-between; min-height: 200px; }
+.une-tag { justify-self: start; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 4px 10px; border-radius: var(--r-pill); }
+.une-card blockquote { margin: 0; font-family: var(--f-soul); font-size: 26px; line-height: 1.12; text-wrap: pretty; }
+.une-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.une-foot b { font-size: 14px; }
+.une-verset { background: var(--blues); color: var(--charcoal); }
+.une-verset .une-tag { background: var(--charcoal); color: var(--blues); }
+.une-passage { background: var(--mocha); color: var(--on-dark); }
+.une-passage .une-tag { background: var(--on-dark); color: var(--mocha); }
+.une-passage .chip-btn { background: rgba(255,248,241,.16); color: var(--on-dark); }
+.une-punchline { background: var(--pomelo); color: var(--charcoal); }
+.une-punchline .une-tag { background: var(--charcoal); color: var(--pomelo); }
+.une-punchline blockquote { font-family: var(--f-voice); font-size: 24px; line-height: 1; letter-spacing: -.04em; text-transform: uppercase; }
+
+/* ---------- Infos pratiques ---------- */
+.info-intro { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; background: var(--charcoal); color: var(--on-dark); border-radius: var(--r); padding: 16px; }
+.info-intro svg { width: 26px; height: 26px; color: var(--pomelo); }
+.info-intro p { margin: 0; font-size: 15.5px; }
+.info-bloc { border-radius: var(--r); padding: 16px; display: grid; gap: 8px; }
+.info-bloc h3 { margin: 0; font: 400 20px/1 var(--f-voice); letter-spacing: -.04em; text-transform: uppercase; }
+.info-bloc p { margin: 0; font-size: 15px; white-space: pre-line; }
+.info-bloc .btn { justify-self: start; margin-top: 4px; }
+.ib-a { background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--line); }
+.ib-a h3 { color: var(--mocha); }
+.ib-b { background: var(--blues); }
+.ib-c { background: #FFE3DA; }
+.sac-count { float: right; letter-spacing: .04em; color: var(--mocha); }
+.sac { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.sac label { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; cursor: pointer; background: var(--paper); border-radius: 12px; padding: 12px; box-shadow: inset 0 0 0 1.5px var(--line); }
+.sac input { width: 22px; height: 22px; margin: 0; accent-color: var(--pomelo); }
+.sac b { display: block; font-weight: 600; }
+.sac small { display: block; font-size: 13.5px; color: var(--ink-soft); margin-top: 2px; }
+.sac input:checked + span b { text-decoration: line-through; color: var(--ink-soft); }
+.sac-note { margin: 10px 0 0; font-size: 13px; color: var(--ink-soft); }
 </style>
-<script type="application/json" id="app-data">{"hero":{"tagline":"Une génération qui se lève","avec":"Joe PORRELLO","lieu":"Mandres-les-Roses","dates":"23 - 25","mois":"OCT."},"liens":{"ateliers":"https://www.billetweb.fr/ateliers-week-end-jap-2026","mur":"https://padlet.com/technique25/week-end-jap-une-generation-qui-se-leve-s024nhbl2ie5vszu0up0"},"lieu":{"nom":"Mandres-les-Roses","adresse":"2 Rue du 8 Mai 1945, 94520 Mandres-les-Roses","itineraire":"https://www.google.com/maps/place/Centre+PEP+75+Paris-Mandres/@48.7066246,2.5495519,17z/data=!3m1!4b1!4m9!3m8!1s0x47e609ed8b3a9015:0xd8ef8ffd79bdea3c!5m2!4m1!1i2!8m2!3d48.7066211!4d2.5521268!16s%2Fg%2F11b6x5h8q6?entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D","planImage":""},"mentions":{"planning":true,"ateliers":true,"plan":true},"jours":[{"id":"d1","date":"2026-10-23","items":[{"id":"i1","h":"18:00","fin":"","titre":"Accueil","lieu":"Accueil","type":"pratique","avec":"","recap":false},{"id":"i2","h":"19:00","fin":"","titre":"Repas tiré des sacs","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i3","h":"20:00","fin":"","titre":"Chambre haute","lieu":"","type":"celebration","avec":"","recap":false},{"id":"i4","h":"20:30","fin":"","titre":"Soirée opening","lieu":"Salle de culte","type":"celebration","avec":"","recap":true},{"id":"i5","h":"22:00","fin":"","titre":"Tea time / fire camp","lieu":"","type":"libre","avec":"","recap":false},{"id":"i6","h":"23:00","fin":"23:30","titre":"Couvre-feu","lieu":"","type":"pratique","avec":"","recap":false}]},{"id":"d2","date":"2026-10-24","items":[{"id":"i7","h":"07:00","fin":"08:00","titre":"Footing","lieu":"","type":"libre","avec":"","recap":false},{"id":"i8","h":"08:30","fin":"","titre":"Petit-déjeuner","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i9","h":"09:30","fin":"","titre":"Chambre haute","lieu":"","type":"celebration","avec":"","recap":false},{"id":"i10","h":"10:00","fin":"","titre":"Plénière","lieu":"Salle de culte","type":"enseignement","avec":"","recap":true},{"id":"i11","h":"11:30","fin":"","titre":"Intégration","lieu":"","type":"libre","avec":"","recap":false},{"id":"i12","h":"12:30","fin":"","titre":"Repas","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i13","h":"13:15","fin":"","titre":"Tennis de table","lieu":"","type":"libre","avec":"","recap":false},{"id":"i14","h":"14:00","fin":"","titre":"Ateliers — round 1","lieu":"Salles atelier","type":"atelier","avec":"","recap":false},{"id":"i15","h":"15:00","fin":"","titre":"Ateliers — round 2","lieu":"Salles atelier","type":"atelier","avec":"","recap":false},{"id":"i16","h":"17:00","fin":"","titre":"Multisport","lieu":"","type":"libre","avec":"","recap":false},{"id":"i17","h":"19:00","fin":"","titre":"Repas","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i18","h":"19:30","fin":"","titre":"Chambre haute","lieu":"","type":"celebration","avec":"","recap":false},{"id":"i19","h":"20:00","fin":"","titre":"Soirée NO LIMIT !","lieu":"Salle de culte","type":"celebration","avec":"","recap":true},{"id":"i20","h":"22:00","fin":"","titre":"Fire camp / tennis de table","lieu":"","type":"libre","avec":"","recap":false},{"id":"i21","h":"23:00","fin":"23:30","titre":"Couvre-feu","lieu":"","type":"pratique","avec":"","recap":false}]},{"id":"d3","date":"2026-10-25","items":[{"id":"i22","h":"07:00","fin":"08:00","titre":"Footing","lieu":"","type":"libre","avec":"","recap":false},{"id":"i23","h":"08:30","fin":"","titre":"Petit-déjeuner","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i24","h":"09:30","fin":"","titre":"Chambre haute","lieu":"","type":"celebration","avec":"","recap":false},{"id":"i25","h":"10:00","fin":"","titre":"Plénière","lieu":"Salle de culte","type":"enseignement","avec":"","recap":true},{"id":"i26","h":"11:30","fin":"","titre":"Photo de groupe","lieu":"","type":"pratique","avec":"","recap":false},{"id":"i27","h":"11:45","fin":"","titre":"Tennis de table","lieu":"","type":"libre","avec":"","recap":false},{"id":"i28","h":"12:30","fin":"","titre":"Repas","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i29","h":"13:45","fin":"","titre":"Multisport","lieu":"","type":"libre","avec":"","recap":false},{"id":"i30","h":"14:00","fin":"14:30","titre":"Fin du week-end JAP","lieu":"","type":"pratique","avec":"","recap":false}]}],"ateliers":[{"id":"a1","titre":"Prier quand on ne sait pas quoi dire","texte":"Des clés simples pour une vie de prière vivante au quotidien.","avec":"Intervenant à confirmer","session":"Sam · 14:00","salle":"Salle A"},{"id":"a2","titre":"Louange : au-delà de la musique","texte":"Adorer Dieu dans toute sa vie, pas seulement le dimanche.","avec":"Intervenant à confirmer","session":"Sam · 14:00","salle":"Salle B"},{"id":"a3","titre":"Identité : qui je suis en Christ","texte":"Se recevoir de Dieu plutôt que du regard des autres.","avec":"Intervenant à confirmer","session":"Sam · 15:00","salle":"Salle A"},{"id":"a4","titre":"Relations & vie affective","texte":"Amitié, couple, célibat : vivre ses relations avec Dieu au centre.","avec":"Intervenant à confirmer","session":"Sam · 15:00","salle":"Salle C"}],"orateurs":[{"id":"o1","nom":"Joe Porrello","role":"Orateur du week-end"}],"annonces":[{"id":"n1","titre":"Changement d'heure","texte":"Dans la nuit de samedi à dimanche, à 3h il sera 2h. On gagne une heure de sommeil."},{"id":"n2","titre":"Couvre-feu à 23h","texte":"Vendredi et samedi soir. Le footing démarre à 7h le lendemain pour les motivés."}],"versets":[{"id":"v1","theme":"elevation","ref":"Ésaïe 60:1","code":"ISA.60","texte":"Lève-toi, sois éclairée, car ta lumière arrive, et la gloire de l'Éternel se lève sur toi."},{"id":"v2","theme":"elevation","ref":"Ésaïe 40:31","code":"ISA.40","texte":"Mais ceux qui se confient en l'Éternel renouvellent leur force. Ils prennent le vol comme les aigles ; ils courent, et ne se lassent point, ils marchent, et ne se fatiguent point."},{"id":"v3","theme":"elevation","ref":"Éphésiens 5:14","code":"EPH.5","texte":"Réveille-toi, toi qui dors, relève-toi d'entre les morts, et Christ t'éclairera."},{"id":"v4","theme":"communion","ref":"Psaume 133:1","code":"PSA.133","texte":"Voici, oh ! qu'il est agréable, qu'il est doux pour des frères de demeurer ensemble !"},{"id":"v5","theme":"communion","ref":"Psaume 145:4","code":"PSA.145","texte":"Que chaque génération célèbre tes œuvres, et publie tes hauts faits !"},{"id":"v6","theme":"consecration","ref":"Romains 12:1","code":"ROM.12","texte":"Je vous exhorte donc, frères, par les compassions de Dieu, à offrir vos corps comme un sacrifice vivant, saint, agréable à Dieu, ce qui sera de votre part un culte raisonnable."},{"id":"v7","theme":"consecration","ref":"1 Timothée 4:12","code":"1TI.4","texte":"Que personne ne méprise ta jeunesse ; mais sois un modèle pour les fidèles, en parole, en conduite, en charité, en foi, en pureté."},{"id":"v8","theme":"consecration","ref":"Joël 2:28","code":"JOL.2","texte":"Après cela, je répandrai mon esprit sur toute chair ; vos fils et vos filles prophétiseront, vos vieillards auront des songes, et vos jeunes gens des visions."}],"recap":{}}</script>
+<script type="application/json" id="app-data">{"hero":{"tagline":"Une génération qui se lève","avec":"Joe PORRELLO","lieu":"Mandres-les-Roses","dates":"23 - 25","mois":"OCT."},"liens":{"ateliers":"https://www.billetweb.fr/ateliers-week-end-jap-2026","mur":"https://padlet.com/technique25/week-end-jap-une-generation-qui-se-leve-s024nhbl2ie5vszu0up0"},"lieu":{"nom":"Mandres-les-Roses","adresse":"2 Rue du 8 Mai 1945, 94520 Mandres-les-Roses","itineraire":"https://www.google.com/maps/place/Centre+PEP+75+Paris-Mandres/@48.7066246,2.5495519,17z/data=!3m1!4b1!4m9!3m8!1s0x47e609ed8b3a9015:0xd8ef8ffd79bdea3c!5m2!4m1!1i2!8m2!3d48.7066211!4d2.5521268!16s%2Fg%2F11b6x5h8q6?entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D","planImage":""},"mentions":{"planning":true,"ateliers":true,"plan":true},"jours":[{"id":"d1","date":"2026-10-23","items":[{"id":"i1","h":"18:00","fin":"","titre":"Accueil & check-in Pass Camp","lieu":"Accueil","type":"pratique","avec":"","recap":false},{"id":"i2","h":"19:00","fin":"","titre":"Repas tiré des sacs","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i3","h":"20:00","fin":"","titre":"Chambre haute","lieu":"","type":"celebration","avec":"","recap":false},{"id":"i4","h":"20:30","fin":"","titre":"Soirée opening","lieu":"Salle de culte","type":"celebration","avec":"","recap":true},{"id":"i5","h":"22:00","fin":"","titre":"Tea time / fire camp","lieu":"","type":"libre","avec":"","recap":false},{"id":"i6","h":"23:00","fin":"23:30","titre":"Couvre-feu","lieu":"","type":"pratique","avec":"","recap":false}]},{"id":"d2","date":"2026-10-24","items":[{"id":"i7","h":"07:00","fin":"08:00","titre":"Footing","lieu":"","type":"libre","avec":"","recap":false},{"id":"i8","h":"08:30","fin":"","titre":"Petit-déjeuner","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i9","h":"09:30","fin":"","titre":"Chambre haute","lieu":"","type":"celebration","avec":"","recap":false},{"id":"i10","h":"10:00","fin":"","titre":"Plénière","lieu":"Salle de culte","type":"enseignement","avec":"","recap":true},{"id":"i11","h":"11:30","fin":"","titre":"Intégration","lieu":"","type":"libre","avec":"","recap":false},{"id":"i12","h":"12:30","fin":"","titre":"Repas","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i13","h":"13:15","fin":"","titre":"Tennis de table","lieu":"","type":"libre","avec":"","recap":false},{"id":"i14","h":"14:00","fin":"","titre":"Ateliers — round 1","lieu":"Salles atelier","type":"atelier","avec":"","recap":false},{"id":"i15","h":"15:00","fin":"","titre":"Ateliers — round 2","lieu":"Salles atelier","type":"atelier","avec":"","recap":false},{"id":"i16","h":"17:00","fin":"","titre":"Multisport","lieu":"","type":"libre","avec":"","recap":false},{"id":"i17","h":"19:00","fin":"","titre":"Repas","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i18","h":"19:30","fin":"","titre":"Chambre haute","lieu":"","type":"celebration","avec":"","recap":false},{"id":"i19","h":"20:00","fin":"","titre":"Soirée NO LIMIT !","lieu":"Salle de culte","type":"celebration","avec":"","recap":true},{"id":"i20","h":"22:00","fin":"","titre":"Fire camp / tennis de table","lieu":"","type":"libre","avec":"","recap":false},{"id":"i21","h":"23:00","fin":"23:30","titre":"Couvre-feu","lieu":"","type":"pratique","avec":"","recap":false},{"id":"i924","h":"09:00","fin":"","titre":"Accueil Pass Congrès / Journée","lieu":"Accueil","type":"pratique","avec":"","recap":false}]},{"id":"d3","date":"2026-10-25","items":[{"id":"i22","h":"07:00","fin":"08:00","titre":"Footing","lieu":"","type":"libre","avec":"","recap":false},{"id":"i23","h":"08:30","fin":"","titre":"Petit-déjeuner","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i24","h":"09:30","fin":"","titre":"Chambre haute","lieu":"","type":"celebration","avec":"","recap":false},{"id":"i25","h":"10:00","fin":"","titre":"Plénière","lieu":"Salle de culte","type":"enseignement","avec":"","recap":true},{"id":"i26","h":"11:30","fin":"","titre":"Photo de groupe","lieu":"","type":"pratique","avec":"","recap":false},{"id":"i27","h":"11:45","fin":"","titre":"Tennis de table","lieu":"","type":"libre","avec":"","recap":false},{"id":"i28","h":"12:30","fin":"","titre":"Repas","lieu":"Restaurant","type":"repas","avec":"","recap":false},{"id":"i29","h":"13:45","fin":"","titre":"Multisport","lieu":"","type":"libre","avec":"","recap":false},{"id":"i30","h":"14:00","fin":"14:30","titre":"Fin du week-end JAP","lieu":"","type":"pratique","avec":"","recap":false},{"id":"i925","h":"09:00","fin":"","titre":"Accueil Pass Congrès / Journée","lieu":"Accueil","type":"pratique","avec":"","recap":false}]}],"ateliers":[{"id":"a1","titre":"Prier quand on ne sait pas quoi dire","texte":"Des clés simples pour une vie de prière vivante au quotidien.","avec":"Intervenant à confirmer","session":"Sam · 14:00","salle":"Salle A","details":"","orateur":""},{"id":"a2","titre":"Louange : au-delà de la musique","texte":"Adorer Dieu dans toute sa vie, pas seulement le dimanche.","avec":"Intervenant à confirmer","session":"Sam · 14:00","salle":"Salle B","details":"","orateur":""},{"id":"a3","titre":"Identité : qui je suis en Christ","texte":"Se recevoir de Dieu plutôt que du regard des autres.","avec":"Intervenant à confirmer","session":"Sam · 15:00","salle":"Salle A","details":"","orateur":""},{"id":"a4","titre":"Relations & vie affective","texte":"Amitié, couple, célibat : vivre ses relations avec Dieu au centre.","avec":"Intervenant à confirmer","session":"Sam · 15:00","salle":"Salle C","details":"","orateur":""}],"orateurs":[{"id":"o1","nom":"Joe Porrello","role":"Orateur principal du week-end","photo":"","bio":"","reseaux":{"instagram":"","tiktok":"","youtube":"","facebook":"","site":""}}],"annonces":[{"id":"n1","titre":"Changement d'heure","texte":"Dans la nuit de samedi à dimanche, à 3h il sera 2h. On gagne une heure de sommeil."},{"id":"n4","titre":"Tournoi JAP Sport","texte":"Dimanche après-midi. Inscriptions ouvertes dans Infos pratiques."},{"id":"n2","titre":"Couvre-feu à 23h","texte":"Vendredi et samedi soir. Le footing démarre à 7h le lendemain pour les motivés."}],"versets":[{"id":"v1","theme":"elevation","ref":"Ésaïe 60:1","code":"ISA.60","texte":"Lève-toi, sois éclairée, car ta lumière arrive, et la gloire de l'Éternel se lève sur toi."},{"id":"v2","theme":"elevation","ref":"Ésaïe 40:31","code":"ISA.40","texte":"Mais ceux qui se confient en l'Éternel renouvellent leur force. Ils prennent le vol comme les aigles ; ils courent, et ne se lassent point, ils marchent, et ne se fatiguent point."},{"id":"v3","theme":"elevation","ref":"Éphésiens 5:14","code":"EPH.5","texte":"Réveille-toi, toi qui dors, relève-toi d'entre les morts, et Christ t'éclairera."},{"id":"v4","theme":"communion","ref":"Psaume 133:1","code":"PSA.133","texte":"Voici, oh ! qu'il est agréable, qu'il est doux pour des frères de demeurer ensemble !"},{"id":"v5","theme":"communion","ref":"Psaume 145:4","code":"PSA.145","texte":"Que chaque génération célèbre tes œuvres, et publie tes hauts faits !"},{"id":"v6","theme":"consecration","ref":"Romains 12:1","code":"ROM.12","texte":"Je vous exhorte donc, frères, par les compassions de Dieu, à offrir vos corps comme un sacrifice vivant, saint, agréable à Dieu, ce qui sera de votre part un culte raisonnable."},{"id":"v7","theme":"consecration","ref":"1 Timothée 4:12","code":"1TI.4","texte":"Que personne ne méprise ta jeunesse ; mais sois un modèle pour les fidèles, en parole, en conduite, en charité, en foi, en pureté."},{"id":"v8","theme":"consecration","ref":"Joël 2:28","code":"JOL.2","texte":"Après cela, je répandrai mon esprit sur toute chair ; vos fils et vos filles prophétiseront, vos vieillards auront des songes, et vos jeunes gens des visions."}],"recap":{},"une":[{"id":"u1","type":"verset","texte":"Lève-toi, sois éclairée, car ta lumière arrive, et la gloire de l'Éternel se lève sur toi.","ref":"Ésaïe 60:1","code":"ISA.60"}],"infos":{"intro":"Des membres du staff JAP seront présents sur place pour t'accueillir et te guider à ton arrivée.","blocs":[{"id":"b1","titre":"Pass Camp","texte":"Pour les personnes hébergées sur place.\nRendez-vous le vendredi 23 octobre à partir de 18h pour le check-in. N'oublie pas ton repas du vendredi soir. La soirée de lancement commence à 20h30.\n\nTu as choisi de payer en 2 fois et tu n'as pas encore fait le 2e paiement ? Fais-le au plus vite pour valider ta participation. Il ne se déclenche pas automatiquement : lance-le depuis l'email reçu à ce sujet.","lien":"","bouton":""},{"id":"b2","titre":"Pass Congrès & Pass Journée","texte":"Selon les jours choisis : rendez-vous le vendredi 23 octobre à partir de 18h, et/ou le samedi 24 et le dimanche 25 octobre à partir de 9h.\nLes plénières du matin commencent à 10h. Les soirées se terminent vers 22h.","lien":"","bouton":""},{"id":"b3","titre":"Équipe médicale","texte":"Une équipe médicale est présente sur place. En cas de souci, va voir Lucette, Claude ou Këryan.","lien":"","bouton":""},{"id":"b4","titre":"Tournoi JAP Sport","texte":"Plusieurs activités sportives tout au long du week-end, sous réserve d'une météo favorable. Un tournoi a lieu le dimanche après-midi : inscris-toi dès maintenant.","lien":"https://docs.google.com/forms/d/e/1FAIpQLSdwZNTbtWJsTe3Qvx_SDI3QgOzbrCsyLND1KqrxFDJFo1bAKw/viewform?usp=header","bouton":"S'inscrire au tournoi"},{"id":"b5","titre":"Allergies","texte":"Les allergies au gluten et au lactose ont été transmises au lieu et sont prises en compte pour les déjeuners et dîners.\nPrévois tes propres petits-déjeuners et en-cas pour la journée : il n'y aura pas d'autre alternative à ces moments-là.","lien":"","bouton":""}],"sac":[{"id":"s1","texte":"Ton repas du vendredi soir","detail":"Plat chaud ? Un micro-ondes est disponible sur place."},{"id":"s2","texte":"Ta serviette de bain","detail":"Si tu dors sur place. Draps, oreillers et couvertures sont fournis."},{"id":"s3","texte":"Tes médicaments","detail":"Si tu en prends."},{"id":"s4","texte":"Une tenue de sport et des chaussures adaptées","detail":"Si tu veux faire du sport."},{"id":"s5","texte":"Ta carte bancaire","detail":"Pour la buvette et les stands."},{"id":"s6","texte":"Un stylo et un carnet","detail":"Pour prendre des notes."},{"id":"s7","texte":"Ta Bible","detail":"Bien sûr !"},{"id":"s8","texte":"Petit-déjeuner et en-cas sans gluten / sans lactose","detail":"Seulement si tu as ces allergies."}]}}</script>
 <div id="app"></div>
 <script id="app-code">
 (function () {
@@ -572,6 +650,8 @@ a { color: inherit; }
     chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5V6.5c0-1 .8-1.8 1.8-1.8h10.4c1 0 1.8.8 1.8 1.8v8c0 1-.8 1.8-1.8 1.8H9L5 19.5Z"/></svg>',
     write: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5V6.5c0-1 .8-1.8 1.8-1.8h10.4c1 0 1.8.8 1.8 1.8v8c0 1-.8 1.8-1.8 1.8H9L5 19.5Z"/><path d="M9 9.5h6M9 12.5h4"/></svg>',
     cam: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5c0-1 .8-1.8 1.8-1.8h2l1.4-2h5.6l1.4 2h2c1 0 1.8.8 1.8 1.8v9c0 1-.8 1.8-1.8 1.8H5.8c-1 0-1.8-.8-1.8-1.8v-9Z"/><circle cx="12" cy="13" r="3.5"/></svg>',
+    info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.6v.1"/></svg>',
+    out: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M10 8h6v6"/></svg>',
     arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>',
     chev: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg>',
     pen: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></svg>',
@@ -587,6 +667,23 @@ a { color: inherit; }
   const note = (txt) => '<div class="note" role="note"><span>✎</span><span>' + txt + "</span></div>";
 
   /* ================== VUES PUBLIQUES ================== */
+  const UNE_TYPES = { verset: "Verset clé", passage: "Passage", punchline: "Punchline" };
+  function homeUne() {
+    const list = (S.une || []).filter((u) => (u.texte || "").trim());
+    if (!list.length) return "";
+    return '<section class="une" aria-label="À la une"><div class="une-head"><span class="section-label" style="margin:0">À la une</span>' +
+      (list.length > 1 ? '<span class="une-count">' + list.length + " · fais défiler</span>" : "") + "</div>" +
+      '<div class="une-track' + (list.length === 1 ? " single" : "") + '">' + list.map((u) => {
+        const t = UNE_TYPES[u.type] ? u.type : "verset";
+        return '<article class="une-card une-' + t + '"><span class="une-tag">' + UNE_TYPES[t] + "</span>" +
+          '<blockquote>' + esc(u.texte) + "</blockquote>" +
+          '<div class="une-foot">' + (u.ref ? "<b>" + esc(u.ref) + "</b>" : "<span></span>") + '<span class="actions">' +
+            '<button class="chip-btn" data-copy="' + esc(u.texte + (u.ref ? " — " + u.ref : "")) + '">Copier</button>' +
+            (u.code ? '<a class="chip-btn" href="https://www.bible.com/fr/bible/93/' + esc(u.code) + '.LSG" target="_blank" rel="noopener">Lire</a>' : "") +
+          "</span></div></article>";
+      }).join("") + "</div></section>";
+  }
+
   function homeWall() {
     const id = wallEmbed();
     return '<section class="home-wall" aria-label="Le Mur">' +
@@ -611,12 +708,13 @@ a { color: inherit; }
         '<div class="when"><span>' + esc(h.dates) + "</span><strong>" + esc(h.mois) + "</strong></div></div>" +
       "</div></header>" +
       '<div class="status wrap" id="status" aria-live="polite"></div>' +
-      '<div class="wrap">' + homeWall() + '<div class="tiles">' +
+      '<div class="wrap">' + homeUne() + homeWall() + '<div class="tiles">' +
         '<a class="tile reserve"' + reserveHref + '><span class="arrow" aria-hidden="true">' + IC.arrow + '</span><span class="t">Réserver<br>mon atelier</span><span class="d">' +
           (S.liens.ateliers ? "Choisis ton atelier, les places sont limitées." : "Le lien de réservation arrive bientôt.") + "</span></a>" +
         '<a class="tile c-dark" href="#planning">' + IC.cal + '<span><span class="t">Planning</span><br><span class="d">Les jours heure par heure</span></span></a>' +
         '<a class="tile c-blue" href="#plan">' + IC.map + '<span><span class="t">Plan du lieu</span><br><span class="d">Salles, stands, réfectoire</span></span></a>' +
-        '<a class="tile c-paper span2" href="#versets">' + IC.book + '<span><span class="t">Versets</span><br><span class="d">La Parole du week-end</span></span></a>' +
+        '<a class="tile c-paper" href="#infos">' + IC.info + '<span><span class="t">Infos pratiques</span><br><span class="d">Arrivée, sac, santé</span></span></a>' +
+        '<a class="tile c-paper" href="#versets">' + IC.book + '<span><span class="t">Versets</span><br><span class="d">La Parole du week-end</span></span></a>' +
         '<a class="row-link" href="#recap"><span>Récap du week-end<small id="recap-sub"></small></span>' + IC.chev + "</a>" +
       "</div>" +
       (vs ? '<div class="section-label">Verset du jour</div>' + verseCard(vs, false) : "") +
@@ -677,20 +775,49 @@ a { color: inherit; }
       "</section>";
   }
 
+  const SOCIAL = [["instagram", "Instagram", "https://instagram.com/"], ["tiktok", "TikTok", "https://www.tiktok.com/@"], ["youtube", "YouTube", "https://www.youtube.com/@"], ["facebook", "Facebook", "https://facebook.com/"], ["site", "Site web", "https://"]];
+  function socialUrl(base, v) {
+    v = String(v || "").trim(); if (!v) return "";
+    if (/^https?:\/\//i.test(v)) return v;
+    return base + v.replace(/^@/, "").replace(/^(www\.)?(instagram|tiktok|youtube|facebook)\.com\/@?/i, "");
+  }
+  function socialLinks(o) {
+    const r = o.reseaux || {};
+    const links = SOCIAL.map(([k, label, base]) => { const u = socialUrl(base, r[k]); return u ? '<a class="soc" href="' + esc(u) + '" target="_blank" rel="noopener">' + label + IC.out + "</a>" : ""; }).join("");
+    return links ? '<div class="socials">' + links + "</div>" : "";
+  }
+  const initials = (n) => (n || "?").split(/\s+/).filter(Boolean).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+  const avatar = (o, cls) => o.photo ? '<img class="' + cls + '" src="' + esc(o.photo) + '" alt="">' : '<span class="' + cls + ' mono">' + esc(initials(o.nom)) + "</span>";
+  const speakerOf = (a) => S.orateurs.find((o) => o.id && o.id === a.orateur);
+
   function viewAteliers() {
     const L = S.liens.ateliers;
+    const atelierCard = (a) => {
+      const sp = speakerOf(a), who = sp ? sp.nom : a.avec;
+      return '<article class="atelier"><div class="band"><span>' + esc(a.session) + "</span><span>" + esc(a.salle) + "</span></div>" +
+        '<div class="body"><h3>' + esc(a.titre) + "</h3>" + (a.texte ? "<p>" + esc(a.texte) + "</p>" : "") +
+        '<details class="at-more"><summary>Découvrir l\'atelier</summary><div class="at-more-body">' +
+          (a.details ? '<p class="at-details">' + esc(a.details) + "</p>" : '<p class="soon">Présentation détaillée à venir.</p>') +
+          (sp ? '<button class="mini-speaker" data-speaker="' + esc(sp.id) + '">' + avatar(sp, "ms-photo") + '<span><b>' + esc(sp.nom) + "</b><small>" + esc(sp.role || "Intervenant") + ' · voir le profil</small></span></button>' + socialLinks(sp) : "") +
+        "</div></details>" +
+        '<div class="foot-row"><span class="who">' + esc(who) + "</span>" + (L ? '<a class="btn small" href="' + esc(L) + '" target="_blank" rel="noopener">Réserver</a>' : "") + "</div></div></article>";
+    };
+    const speakerCard = (o) => {
+      const leads = S.ateliers.filter((a) => a.orateur === o.id);
+      return '<article class="sp-card" id="sp-' + esc(o.id) + '"><div class="sp-top">' + avatar(o, "sp-photo") +
+        '<div class="sp-id"><b>' + esc(o.nom) + "</b><span>" + esc(o.role) + "</span></div></div>" +
+        (o.bio ? '<p class="sp-bio">' + esc(o.bio) + "</p>" : '<p class="soon">Présentation à venir.</p>') +
+        (leads.length ? '<div class="sp-leads">' + leads.map((a) => "<span>Anime <b>" + esc(a.titre) + "</b>" + (a.session ? " · " + esc(a.session) : "") + "</span>").join("") + "</div>" : "") +
+        socialLinks(o) + "</article>";
+    };
     return '<section class="view wrap" data-route="ateliers" hidden>' +
       '<div class="view-head"><span class="kicker">apprendre & grandir</span><h1>Ateliers</h1></div>' +
       '<div class="reserve-banner"><h2>Réserve<br>ta place</h2><p>Les places sont limitées dans chaque salle. Choisis un atelier par session.</p>' +
         (L ? '<a class="btn dark" href="' + esc(L) + '" target="_blank" rel="noopener">Réserver mon atelier</a>' : '<a class="btn dark" aria-disabled="true">Lien bientôt disponible</a>') + "</div>" +
       (S.ateliers.length ? '<div class="section-label">Les ateliers</div>' : "") +
       (S.mentions.ateliers ? note("<b>Ateliers d'exemple.</b> Titres et intervenants à remplacer par la liste officielle.") + '<div style="height:12px"></div>' : "") +
-      '<div class="stack">' + S.ateliers.map((a) => '<article class="atelier"><div class="band"><span>' + esc(a.session) + "</span><span>" + esc(a.salle) + "</span></div>" +
-        '<div class="body"><h3>' + esc(a.titre) + "</h3>" + (a.texte ? "<p>" + esc(a.texte) + "</p>" : "") +
-        '<div class="foot-row"><span class="who">' + esc(a.avec) + "</span>" + (L ? '<a class="btn small" href="' + esc(L) + '" target="_blank" rel="noopener">Réserver</a>' : "") + "</div></div></article>").join("") + "</div>" +
-      (S.orateurs.length ? '<div class="section-label">' + (S.orateurs.length > 1 ? "Orateurs" : "Orateur") + '</div><div class="stack">' +
-        S.orateurs.map((o) => { const ini = (o.nom || "?").split(/\s+/).filter(Boolean).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
-          return '<div class="speaker"><div class="mono">' + esc(ini) + "</div><div><b>" + esc(o.nom) + "</b><span>" + esc(o.role) + "</span></div></div>"; }).join("") + "</div>" : "") +
+      '<div class="stack">' + S.ateliers.map(atelierCard).join("") + "</div>" +
+      (S.orateurs.length ? '<div class="section-label">' + (S.orateurs.length > 1 ? "Les intervenants" : "L'intervenant") + '</div><div class="stack">' + S.orateurs.map(speakerCard).join("") + "</div>" : "") +
       "</section>";
   }
 
@@ -762,6 +889,7 @@ a { color: inherit; }
   function viewMur() {
     const L = S.liens.mur, id = wallEmbed(), attrs = L ? ' href="' + esc(L) + '" target="_blank" rel="noopener"' : ' aria-disabled="true"';
     const rules = '<div class="section-label">Les règles du mur</div><ul class="rules">' +
+        "<li><span><b>Écris un témoignage, des punchlines ou des versets</b> qui t'ont marqué pendant le week-end.</span></li>" +
         "<li><span><b>10 photos maximum par personne.</b> Choisis tes meilleurs moments.</span></li>" +
         "<li><span><b>Demande l'accord</b> des personnes que tu prends en photo avant de publier.</span></li>" +
         "<li><span><b>Bienveillance avant tout.</b> Chaque publication est relue par l'équipe avant d'apparaître.</span></li>" +
@@ -820,7 +948,25 @@ a { color: inherit; }
       "</section>";
   }
 
-  const ROUTES = ["accueil", "planning", "ateliers", "plan", "mur", "versets", "recap"];
+  const SAC_KEY = "wejap-sac";
+  function sacState() { try { return JSON.parse(localStorage.getItem(SAC_KEY) || "{}") || {}; } catch (_) { return {}; } }
+  function viewInfos() {
+    const I = S.infos || { intro: "", blocs: [], sac: [] }, done = sacState();
+    const nDone = (I.sac || []).filter((x) => done[x.id]).length;
+    return '<section class="view wrap" data-route="infos" hidden>' +
+      '<div class="view-head"><a class="back" href="#accueil">‹ Accueil</a><span class="kicker">avant de partir</span><h1>Infos pratiques</h1></div>' +
+      (I.intro ? '<div class="info-intro">' + IC.info + "<p>" + esc(I.intro) + "</p></div>" : "") +
+      '<div class="stack" style="margin-top:14px">' + (I.blocs || []).map((b, i) =>
+        '<article class="info-bloc' + (i % 3 === 0 ? " ib-a" : i % 3 === 1 ? " ib-b" : " ib-c") + '"><h3>' + esc(b.titre) + "</h3>" +
+        (b.texte ? '<p>' + esc(b.texte) + "</p>" : "") +
+        (b.lien ? '<a class="btn small dark" href="' + esc(b.lien) + '" target="_blank" rel="noopener">' + esc(b.bouton || "Ouvrir le lien") + "</a>" : "") + "</article>").join("") + "</div>" +
+      ((I.sac || []).length ? '<div class="section-label">Dans ton sac <span class="sac-count" id="sac-count">' + nDone + "/" + I.sac.length + '</span></div><ul class="sac">' +
+        I.sac.map((x) => '<li><label><input type="checkbox" data-sac="' + esc(x.id) + '"' + (done[x.id] ? " checked" : "") + '><span><b>' + esc(x.texte) + "</b>" + (x.detail ? "<small>" + esc(x.detail) + "</small>" : "") + "</span></label></li>").join("") +
+        '</ul><p class="sac-note">Coche au fur et à mesure : ta liste reste enregistrée sur ton téléphone.</p>' : "") +
+      "</section>";
+  }
+
+  const ROUTES = ["accueil", "planning", "ateliers", "plan", "mur", "versets", "recap", "infos"];
   const currentRoute = () => (ROUTES.includes(location.hash.slice(1)) ? location.hash.slice(1) : "accueil");
 
   function renderApp() {
@@ -828,7 +974,7 @@ a { color: inherit; }
     const dirty = isDirty();
     $("#app").innerHTML =
       (canAdmin && dirty && !adminOpen ? '<div class="preview-bar wrap" style="max-width:480px;margin:0 auto"><span>Aperçu : modifications non publiées</span><span class="actions"><button class="btn ghost" data-admin-open>Modifier</button><button class="btn dark" data-publish>Publier</button></span></div>' : "") +
-      '<div class="app">' + viewAccueil(slots) + viewPlanning(slots) + viewAteliers() + viewPlan() + viewMur() + viewVersets() + viewRecap(slots) + "</div>" +
+      '<div class="app">' + viewAccueil(slots) + viewPlanning(slots) + viewAteliers() + viewPlan() + viewMur() + viewVersets() + viewRecap(slots) + viewInfos() + "</div>" +
       '<div class="tabbar"><nav aria-label="Navigation principale">' +
         [["accueil", IC.home, "Accueil"], ["mur", IC.chat, "Le Mur"], ["planning", IC.cal, "Planning"], ["ateliers", IC.grid, "Ateliers"], ["plan", IC.map, "Plan"]]
           .map(([r, ic, l]) => '<a href="#' + r + '" data-tab="' + r + '">' + ic + l + "</a>").join("") + "</nav></div>" +
@@ -844,7 +990,7 @@ a { color: inherit; }
     const r = currentRoute();
     document.querySelectorAll(".view").forEach((v) => (v.hidden = v.dataset.route !== r));
     document.querySelectorAll(".tabbar a").forEach((a) => {
-      const on = a.dataset.tab === r || (a.dataset.tab === "accueil" && (r === "versets" || r === "recap"));
+      const on = a.dataset.tab === r || (a.dataset.tab === "accueil" && (r === "versets" || r === "recap" || r === "infos"));
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
     if (scroll) window.scrollTo(0, 0);
@@ -905,6 +1051,26 @@ a { color: inherit; }
       '<div class="adm-grid">' + fld("hero.avec", "Orateur (avec…)") + fld("hero.lieu", "Lieu") + "</div>" +
       '<div class="adm-grid">' + fld("hero.dates", "Dates", "text", { ph: "23 - 25" }) + fld("hero.mois", "Mois", "text", { ph: "OCT." }) + "</div>";
 
+    if (!Array.isArray(S.une)) S.une = [];
+    const une = '<p class="adm-help">Versets clés, passages ou punchlines mis en avant en haut de l\'accueil. Le premier de la liste s\'affiche en premier.</p>' +
+      S.une.map((u, i) => { const p = "une." + i; return itemCard("une", i, u, S.une.length, "<span>" + esc(u.ref || (u.texte || "").slice(0, 40) || "Vide") + "</span><em>" + (UNE_TYPES[u.type] || "") + "</em>",
+        fld(p + ".type", "Type", "select", UNE_TYPES) +
+        fld(p + ".texte", "Texte", "textarea") +
+        '<div class="adm-grid">' + fld(p + ".ref", "Référence ou auteur", "text", { ph: "Ésaïe 60:1 · Joe Porrello" }) + fld(p + ".code", "Chapitre bible.com (facultatif)", "text", { ph: "ISA.60" }) + "</div>", true); }).join("") +
+      '<button class="adm-add" data-add="une">+ Mettre en avant un passage</button>';
+
+    const I = S.infos || {};
+    const infosAdm = fld("infos.intro", "Message d'accueil", "textarea") +
+      '<div class="adm-day-title" style="margin-top:6px">Blocs d\'information</div>' +
+      (I.blocs || []).map((b, i) => { const p = "infos.blocs." + i; return itemCard("infos.blocs", i, b, I.blocs.length, "<span>" + esc(b.titre || "Sans titre") + "</span>",
+        fld(p + ".titre", "Titre") + fld(p + ".texte", "Texte", "textarea") +
+        '<div class="adm-grid">' + fld(p + ".lien", "Lien (facultatif)", "url", { ph: "https://…" }) + fld(p + ".bouton", "Texte du bouton", "text", { ph: "S'inscrire" }) + "</div>", true); }).join("") +
+      '<button class="adm-add" data-add="infos.blocs">+ Ajouter un bloc</button>' +
+      '<div class="adm-day-title" style="margin-top:10px">Dans ton sac</div>' +
+      (I.sac || []).map((x, i) => { const p = "infos.sac." + i; return itemCard("infos.sac", i, x, I.sac.length, "<span>" + esc(x.texte || "Vide") + "</span>",
+        fld(p + ".texte", "Élément") + fld(p + ".detail", "Précision (facultatif)"), true); }).join("") +
+      '<button class="adm-add" data-add="infos.sac">+ Ajouter un élément</button>';
+
     const liens =
       fld("liens.ateliers", "Lien de réservation des ateliers", "url", { ph: "https://…" }) +
       fld("liens.mur", "Lien du mur (Padlet)", "url", { ph: "https://padlet.com/…" }) +
@@ -937,15 +1103,28 @@ a { color: inherit; }
       }).join("") +
       '<button class="adm-add" data-add="jours">+ Ajouter un jour</button>';
 
+    const spOpts = () => Object.assign({ "": "— Choisir dans la liste —" }, ...S.orateurs.map((o) => ({ [o.id]: o.nom || "Sans nom" })));
     const ateliers = fld("mentions.ateliers", "Afficher la mention « ateliers d'exemple »", "checkbox") +
-      S.ateliers.map((a, i) => itemCard("ateliers", i, a, S.ateliers.length, "<span>" + esc(a.titre || "Sans titre") + "</span><em>" + esc(a.session) + "</em>",
-        fld("ateliers." + i + ".titre", "Titre") + fld("ateliers." + i + ".texte", "Description", "textarea") + fld("ateliers." + i + ".avec", "Intervenant") +
-        '<div class="adm-grid">' + fld("ateliers." + i + ".session", "Session", "text", { ph: "Sam · 14:30" }) + fld("ateliers." + i + ".salle", "Salle") + "</div>", true)).join("") +
+      S.ateliers.map((a, i) => { const p = "ateliers." + i; return itemCard("ateliers", i, a, S.ateliers.length, "<span>" + esc(a.titre || "Sans titre") + "</span><em>" + esc(a.session) + "</em>",
+        fld(p + ".titre", "Titre") +
+        fld(p + ".texte", "Description courte (sur la carte)", "textarea") +
+        fld(p + ".details", "Présentation détaillée (dans « Découvrir l'atelier »)", "textarea") +
+        fld(p + ".orateur", "Intervenant (profil)", "select", spOpts()) +
+        (a.orateur ? "" : fld(p + ".avec", "Ou nom affiché si pas de profil")) +
+        '<p class="adm-help">Pour ajouter la photo, la bio et les réseaux de l\'intervenant, crée son profil dans « Intervenants ».</p>' +
+        '<div class="adm-grid">' + fld(p + ".session", "Session", "text", { ph: "Sam · 14:00" }) + fld(p + ".salle", "Salle") + "</div>", true); }).join("") +
       '<button class="adm-add" data-add="ateliers">+ Ajouter un atelier</button>';
 
-    const orateurs = S.orateurs.map((o, i) => itemCard("orateurs", i, o, S.orateurs.length, "<span>" + esc(o.nom || "Sans nom") + "</span>",
-      fld("orateurs." + i + ".nom", "Nom") + fld("orateurs." + i + ".role", "Rôle"), true)).join("") +
-      '<button class="adm-add" data-add="orateurs">+ Ajouter un orateur</button>';
+    const orateurs = '<p class="adm-help">Orateurs et animateurs d\'ateliers. Pour les réseaux, mets le @pseudo ou le lien complet.</p>' +
+      S.orateurs.map((o, i) => { const p = "orateurs." + i; return itemCard("orateurs", i, o, S.orateurs.length, "<span>" + esc(o.nom || "Sans nom") + "</span><em>" + esc(o.role || "") + "</em>",
+        '<div class="adm-grid">' + fld(p + ".nom", "Nom") + fld(p + ".role", "Rôle", "text", { ph: "Orateur, animateur…" }) + "</div>" +
+        '<div class="adm-photo">' + avatar(o, "sp-photo") + '<span class="actions"><label class="btn small file-btn">' + (o.photo ? "Changer la photo" : "Ajouter une photo") +
+          '<input type="file" accept="image/*" data-photo="' + p + '.photo"></label>' + (o.photo ? '<button class="btn small ghost" data-photo-remove="' + p + '.photo">Retirer</button>' : "") + "</span></div>" +
+        fld(p + ".bio", "Présentation", "textarea") +
+        '<div class="adm-grid">' + fld(p + ".reseaux.instagram", "Instagram", "text", { ph: "@pseudo" }) + fld(p + ".reseaux.tiktok", "TikTok", "text", { ph: "@pseudo" }) + "</div>" +
+        '<div class="adm-grid">' + fld(p + ".reseaux.youtube", "YouTube", "text", { ph: "@chaine" }) + fld(p + ".reseaux.facebook", "Facebook", "text", { ph: "pseudo ou lien" }) + "</div>" +
+        fld(p + ".reseaux.site", "Site web", "text", { ph: "monsite.fr" }), true); }).join("") +
+      '<button class="adm-add" data-add="orateurs">+ Ajouter un intervenant</button>';
 
     const versets = S.versets.map((v, i) => itemCard("versets", i, v, S.versets.length, "<span>" + esc(v.ref || "Sans référence") + "</span><em>" + (THEMES[v.theme] || "") + "</em>",
       '<div class="adm-grid">' + fld("versets." + i + ".ref", "Référence", "text", { ph: "Ésaïe 60:1" }) + fld("versets." + i + ".theme", "Thème", "select", THEMES) + "</div>" +
@@ -976,11 +1155,13 @@ a { color: inherit; }
         '<div class="admin-intro">Modifie le contenu ci-dessous, vérifie l\'aperçu, puis appuie sur <b>Publier</b>. Les participants voient la nouvelle version tout de suite.</div>' +
         (draftOffer ? '<div class="draft-banner"><span><b>Brouillon retrouvé.</b> Des modifications non publiées ont été gardées sur cet appareil.</span><span class="actions"><button class="btn small dark" data-draft-use>Reprendre le brouillon</button><button class="btn small ghost" data-draft-drop>L\'ignorer</button></span></div>' : "") +
         section("infos", "Accueil", null, infos) +
+        section("une", "À la une", plural((S.une || []).length, "élément"), une) +
+        section("infos-p", "Infos pratiques", null, infosAdm) +
         section("liens", "Liens & lieu", null, liens) +
         section("annonces", "Annonces", plural(S.annonces.length, "annonce"), annonces) +
         section("planning", "Planning", plural(S.jours.length, "jour"), planning) +
         section("ateliers", "Ateliers", plural(S.ateliers.length, "atelier"), ateliers) +
-        section("orateurs", "Orateurs", plural(S.orateurs.length, "orateur"), orateurs) +
+        section("orateurs", "Intervenants", plural(S.orateurs.length, "intervenant"), orateurs) +
         section("versets", "Versets", plural(S.versets.length, "verset"), versets) +
         section("recap", "Récap", null, recap) +
         section("plan", "Plan du lieu", null, plan) +
@@ -1001,7 +1182,7 @@ a { color: inherit; }
     // Met à jour l'appli derrière le panneau sans toucher au panneau ouvert.
     const slots = computeSlots();
     const app = $(".app"); if (!app) return;
-    app.innerHTML = viewAccueil(slots) + viewPlanning(slots) + viewAteliers() + viewPlan() + viewMur() + viewVersets() + viewRecap(slots);
+    app.innerHTML = viewAccueil(slots) + viewPlanning(slots) + viewAteliers() + viewPlan() + viewMur() + viewVersets() + viewRecap(slots) + viewInfos();
     refreshStatus(); applyRoute(false);
   }
   function footHTML() {
@@ -1016,8 +1197,11 @@ a { color: inherit; }
 
   function newItem(listPath) {
     if (listPath === "annonces") return { id: uid("n"), titre: "Nouvelle annonce", texte: "" };
-    if (listPath === "ateliers") return { id: uid("a"), titre: "Nouvel atelier", texte: "", avec: "", session: "", salle: "" };
-    if (listPath === "orateurs") return { id: uid("o"), nom: "Nouvel orateur", role: "" };
+    if (listPath === "une") return { id: uid("u"), type: "verset", texte: "", ref: "", code: "" };
+    if (listPath === "infos.blocs") return { id: uid("b"), titre: "Nouveau bloc", texte: "", lien: "", bouton: "" };
+    if (listPath === "infos.sac") return { id: uid("s"), texte: "", detail: "" };
+    if (listPath === "ateliers") return { id: uid("a"), titre: "Nouvel atelier", texte: "", details: "", orateur: "", avec: "", session: "", salle: "" };
+    if (listPath === "orateurs") return { id: uid("o"), nom: "Nouvel intervenant", role: "", photo: "", bio: "", reseaux: { instagram: "", tiktok: "", youtube: "", facebook: "", site: "" } };
     if (listPath === "versets") return { id: uid("v"), theme: "elevation", ref: "", code: "", texte: "" };
     if (listPath === "jours") {
       const last = sortedDays().slice(-1)[0];
@@ -1039,7 +1223,7 @@ a { color: inherit; }
       const c = e && e.code;
       if (c === "conflict") publishError = "Une autre version vient d'être publiée. La page se recharge ; tes modifications restent en brouillon sur cet appareil.";
       else if (c === "not_writer" || c === "not_granted" || c === "consent_required" || c === "capability_disabled" || c === "not_declared" || c === "capability_removed") { publishError = "Ce compte ne peut pas publier cette page. Connecte-toi avec le compte propriétaire."; }
-      else if (c === "too_large") publishError = "La page est trop lourde. Utilise une image du plan plus légère.";
+      else if (c === "too_large") publishError = "La page est trop lourde. Utilise des images plus légères (plan ou photos).";
       else if (c === "rate_limited") publishError = "Trop de publications d'affilée. Attends une minute puis réessaie.";
       else publishError = "La publication n'a pas abouti. Vérifie ta connexion et réessaie.";
       publishing = false;
@@ -1047,17 +1231,19 @@ a { color: inherit; }
     }
   }
 
-  function loadPlanImage(file) {
+  function loadImage(file, path, max, square) {
     if (!file) return;
     const r = new FileReader();
     r.onload = () => {
       const img = new Image();
       img.onload = () => {
-        const max = 1600, k = Math.min(1, max / Math.max(img.width, img.height));
-        const c = document.createElement("canvas");
-        c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
-        const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, c.width, c.height); x.drawImage(img, 0, 0, c.width, c.height);
-        S.lieu.planImage = c.toDataURL("image/jpeg", 0.82);
+        let sx = 0, sy = 0, sw = img.width, sh = img.height;
+        if (square) { const m = Math.min(sw, sh); sx = (sw - m) / 2; sy = (sh - m) / 2; sw = sh = m; }
+        const k = Math.min(1, max / Math.max(sw, sh));
+        const cv = document.createElement("canvas");
+        cv.width = Math.round(sw * k); cv.height = Math.round(sh * k);
+        const x = cv.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, cv.width, cv.height); x.drawImage(img, sx, sy, sw, sh, 0, 0, cv.width, cv.height);
+        setPath(path, cv.toDataURL("image/jpeg", 0.82));
         changed(true);
       };
       img.onerror = () => toast("Cette image n'a pas pu être lue. Essaie un JPG ou un PNG.");
@@ -1074,7 +1260,15 @@ a { color: inherit; }
     if (!el.hasAttribute("data-rerender")) changed(false);
   });
   document.addEventListener("change", (e) => {
-    if (e.target.id === "plan-file") { loadPlanImage(e.target.files && e.target.files[0]); return; }
+    if (e.target.dataset && e.target.dataset.sac) {
+      const st = sacState(); st[e.target.dataset.sac] = e.target.checked;
+      try { localStorage.setItem(SAC_KEY, JSON.stringify(st)); } catch (_) {}
+      const I = S.infos || { sac: [] }, el = document.getElementById("sac-count");
+      if (el) el.textContent = I.sac.filter((x) => st[x.id]).length + "/" + I.sac.length;
+      return;
+    }
+    if (e.target.id === "plan-file") { loadImage(e.target.files && e.target.files[0], "lieu.planImage", 1600, false); return; }
+    if (e.target.dataset && e.target.dataset.photo) { loadImage(e.target.files && e.target.files[0], e.target.dataset.photo, 400, true); return; }
     const el = e.target.closest("#admin [data-path]");
     if (!el || !el.hasAttribute("data-rerender")) return;
     setPath(el.dataset.path, el.type === "checkbox" ? el.checked : el.value);
@@ -1094,7 +1288,7 @@ a { color: inherit; }
     if (d.filter) { verseFilter = d.filter; renderVersetsOnly(); return; }
     if (t.hasAttribute("data-planzoom")) { planZoom = !planZoom; t.classList.toggle("zoom", planZoom); return; }
     if (d.copy != null) {
-      const fallback = () => { const q = t.closest(".verse-card").querySelector("blockquote"); const r = document.createRange(); r.selectNodeContents(q); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Texte sélectionné, tu peux le copier"); };
+      const fallback = () => { const q = t.closest(".verse-card, .une-card").querySelector("blockquote"); const r = document.createRange(); r.selectNodeContents(q); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Texte sélectionné, tu peux le copier"); };
       try { navigator.clipboard.writeText(d.copy).then(() => toast("Verset copié"), fallback); } catch (_) { fallback(); }
       return;
     }
@@ -1122,6 +1316,8 @@ a { color: inherit; }
     }
     if (d.add) { const it = newItem(d.add); getPath(d.add).push(it); if (d.add !== "jours") openItems.add(it.id); changed(true); return; }
     if (t.hasAttribute("data-plan-remove")) { S.lieu.planImage = ""; changed(true); return; }
+    if (d.photoRemove) { setPath(d.photoRemove, ""); changed(true); return; }
+    if (d.speaker) { const el = document.getElementById("sp-" + d.speaker); if (el) { el.scrollIntoView({ behavior: "smooth", block: "center" }); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1400); } return; }
     if (t.hasAttribute("data-revert")) { pendingDel = "__revert"; renderAdmin(); return; }
     if (t.hasAttribute("data-revert-yes")) { S = clone(PUBLISHED); pendingDel = null; openItems.clear(); changed(true); return; }
     if (t.hasAttribute("data-draft-use")) { S = draftOffer; draftOffer = null; changed(true); return; }
