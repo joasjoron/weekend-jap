@@ -1472,7 +1472,7 @@ a { color: inherit; }
 
   function applyRoute(scroll) {
     const r = currentRoute();
-    document.querySelectorAll(".view").forEach((v) => (v.hidden = v.dataset.route !== r));
+    document.querySelectorAll(".view").forEach((v) => { v.hidden = v.dataset.route !== r; if (v.hidden) v.style.animation = ""; });
     document.querySelectorAll(".tabbar a").forEach((a) => {
       const on = a.dataset.tab === r || (a.dataset.tab === "accueil" && (r === "versets" || r === "recap" || r === "infos" || r === "intervenants"));
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
@@ -1486,10 +1486,13 @@ a { color: inherit; }
   }
   window.addEventListener("hashchange", () => applyRoute(true));
 
-  // Glisser de droite à gauche (ou l'inverse) = onglet suivant / précédent de la barre du bas
+  // Glisser de droite à gauche (ou l'inverse) = onglet suivant / précédent de la barre du bas.
+  // La page suit le doigt et la suivante apparaît progressivement depuis le bord.
   const TAB_ORDER = ["accueil", "mur", "planning", "ateliers", "plan"];
   const tabIndex = (r) => { const i = TAB_ORDER.indexOf(r); return i >= 0 ? i : 0; };
-  let swipe = null, swipeDir = 0;
+  let swipe = null, swipeDir = 0, swipeBusy = false;
+  const EASE = "cubic-bezier(.22,.61,.36,1)";
+  const reduceMotion = () => window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   const scrollsX = (el) => {
     for (; el && el !== document.body; el = el.parentElement) {
       const ox = getComputedStyle(el).overflowX;
@@ -1497,24 +1500,76 @@ a { color: inherit; }
     }
     return false;
   };
+  function swipeStart(dir) {
+    const app = $(".app"), cur = $('.view:not([hidden])');
+    const j = tabIndex(currentRoute()) + dir;
+    const nxt = j >= 0 && j < TAB_ORDER.length ? $('.view[data-route="' + TAB_ORDER[j] + '"]') : null;
+    const rc = app.getBoundingClientRect(), top = rc.top + window.scrollY;
+    if (nxt) {
+      nxt.hidden = false;
+      Object.assign(nxt.style, { animation: "none", position: "fixed", left: rc.left + "px", width: rc.width + "px", top: top - 0 + "px", bottom: "0", overflow: "hidden",
+        background: "var(--cream)", zIndex: "5", boxShadow: "0 0 40px rgba(27,3,0,.25)", willChange: "transform, opacity", pointerEvents: "none" });
+      if (nxt.dataset.route === "plan") mount3d();
+    }
+    cur.style.willChange = "transform, opacity";
+    return { cur, nxt, route: nxt ? TAB_ORDER[j] : null, w: rc.width, dir };
+  }
+  function swipeSet(st, dx, anim) {
+    const tr = anim ? "transform .55s " + EASE + ", opacity .55s " + EASE : "none";
+    const p = Math.min(1, Math.abs(dx) / st.w);
+    st.cur.style.transition = tr;
+    st.cur.style.transform = "translateX(" + (st.nxt ? dx * 0.35 : dx) + "px)";
+    st.cur.style.opacity = String(1 - p * 0.55);
+    if (st.nxt) {
+      st.nxt.style.transition = tr;
+      st.nxt.style.transform = "translateX(" + (st.dir * st.w + dx) + "px)";
+      st.nxt.style.opacity = String(0.8 + p * 0.2);
+    }
+  }
+  function swipeClean(st) {
+    ["transition", "transform", "opacity", "willChange"].forEach((k) => (st.cur.style[k] = ""));
+    if (st.nxt) { st.nxt.removeAttribute("style"); st.nxt.style.animation = "none"; }
+  }
   document.addEventListener("touchstart", (e) => {
     swipe = null;
-    if (adminOpen || e.touches.length !== 1) return;
+    if (adminOpen || swipeBusy || e.touches.length !== 1) return;
     const t = e.target;
     if (t.closest && t.closest("iframe, .p3, .p3-labels, input, textarea, select, .plan-img.zoom, .admin, [data-noswipe]")) return;
     if (scrollsX(t)) return;
-    swipe = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+    swipe = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now(), st: null, dx: 0, lx: e.touches[0].clientX, lt: Date.now(), v: 0 };
   }, { passive: true });
-  document.addEventListener("touchend", (e) => {
+  document.addEventListener("touchmove", (e) => {
     if (!swipe) return;
-    const p = e.changedTouches[0], dx = p.clientX - swipe.x, dy = p.clientY - swipe.y, dt = Date.now() - swipe.t;
-    swipe = null;
-    if (dt > 700 || Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.6) return;
-    const i = tabIndex(currentRoute()), j = i + (dx < 0 ? 1 : -1);
-    if (j < 0 || j >= TAB_ORDER.length) return;
-    swipeDir = dx < 0 ? 1 : -1;
-    location.hash = TAB_ORDER[j];
-  }, { passive: true });
+    const p = e.touches[0], dx = p.clientX - swipe.x, dy = p.clientY - swipe.y;
+    if (!swipe.st) {
+      if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+      if (Math.abs(dx) < Math.abs(dy) * 1.3) { swipe = null; return; }
+      swipe.st = swipeStart(dx < 0 ? 1 : -1);
+    }
+    if (e.cancelable) e.preventDefault();
+    const now = Date.now();
+    swipe.v = (p.clientX - swipe.lx) / Math.max(1, now - swipe.lt); swipe.lx = p.clientX; swipe.lt = now;
+    let d = dx;
+    if (swipe.st.dir > 0 && d > 0 || swipe.st.dir < 0 && d < 0) d = 0;          // pas de retour au-delà du point de départ
+    if (!swipe.st.nxt) d = d / 3;                                                // résistance au bout de la barre
+    swipe.dx = d; swipeSet(swipe.st, d, false);
+  }, { passive: false });
+  const swipeEnd = () => {
+    if (!swipe || !swipe.st) { swipe = null; return; }
+    const { st, dx, v } = swipe; swipe = null;
+    const go = st.nxt && (Math.abs(dx) > st.w * 0.3 || (Math.abs(v) > 0.45 && Math.sign(v) === -st.dir && Math.abs(dx) > 30));
+    swipeBusy = true;
+    if (reduceMotion()) { if (go) st.cur.hidden = true; swipeClean(st); if (go) location.hash = st.route; else if (st.nxt) st.nxt.hidden = true; swipeBusy = false; return; }
+    swipeSet(st, go ? -st.dir * st.w : 0, true);
+    setTimeout(() => {
+      if (go) { st.cur.hidden = true; window.scrollTo(0, 0); }
+      swipeClean(st);
+      if (go) location.hash = st.route; else if (st.nxt) st.nxt.hidden = true;
+      swipeBusy = false;
+    }, 570);
+  };
+  document.addEventListener("touchend", swipeEnd, { passive: true });
+  document.addEventListener("touchcancel", swipeEnd, { passive: true });
 
   let toastT;
   function toast(msg) { const t = $("#toast"); if (!t) return; t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => (t.hidden = true), 2200); }
